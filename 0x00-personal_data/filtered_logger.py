@@ -7,7 +7,4 @@ from typing import List, Union
 import re
 
 
-def filter_datum(fields, redaction, message, separator):
-    """filtering data"""
-    return re.sub(f'({"|".join(fields)})=[^{separator}]+',
-                  lambda m: f'{m.group(1)}={redaction}', message)
+def filter_datum(fields: List[str], redaction: str, message: str, separator: str):
