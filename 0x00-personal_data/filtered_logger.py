@@ -12,7 +12,6 @@ from typing import List
 PII_FIELDS = ("name", "email", "phone", "ssn", "password")
 
 
-
 def filter_datum(fields: List[str], redaction: str,
                  message: str, separator: str) -> str:
     """filter data in various fields"""
