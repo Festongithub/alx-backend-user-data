@@ -44,7 +44,7 @@ def get_db() -> mysql.connector.connection.MYSQLConnection:
     Use the module mysql-connector-python to connect
     to the MySQL database (pip3 install mysql-connector-python)
     """
-    username = envoron.get("PERSONAL_DATA_DB_USERNAME", "root")
+    username = environ.get("PERSONAL_DATA_DB_USERNAME", "root")
     password = environ.get("PERSONAL_DATA_DB_PASSWORD", "")
     host = environ.get("PERSONAL_DATA_DB_HOST", "localhost")
     db_name = environ.get("PERSONAL_DATA_DB_NAME")
