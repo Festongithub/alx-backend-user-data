@@ -5,7 +5,9 @@ Filter data and obfuscation
 """
 
 import logging
+from os import environ
 import re
+import mysql.connector
 from typing import List
 
 # fields
@@ -52,6 +54,25 @@ def get_db() -> mysql.connector.connection.MYSQLConnection:
                                                host=host,
                                                database=db_name)
     return connect
+
+
+def main():
+    """
+    Main function to retrieve user data from database and log to console
+    """
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM users;")
+    field_names = [i[0] for i in cursor.description]
+
+    logger = get_logger()
+
+    for row in cursor:
+        str_row = ''.join(f'{f}={str(r)}; ' for r, f in zip(row, field_names))
+        logger.info(str_row.strip())
+
+    cursor.close()
+    db.close()
 
 
 class RedactingFormatter(logging.Formatter):
