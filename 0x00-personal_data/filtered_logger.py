@@ -34,6 +34,26 @@ def get_logger() -> logging.Logger:
     return logger
 
 
+def get_db() -> mysql.connector.connection.MYSQLConnection:
+    """
+    function that returns a connector to the
+    database (mysql.connector.connection.MySQLConnection object).
+    Use the os module to obtain credentials from the environment
+    Use the module mysql-connector-python to connect
+    to the MySQL database (pip3 install mysql-connector-python)
+    """
+    username = envoron.get("PERSONAL_DATA_DB_USERNAME", "root")
+    password = environ.get("PERSONAL_DATA_DB_PASSWORD", "")
+    host = environ.get("PERSONAL_DATA_DB_HOST", "localhost")
+    db_name = environ.get("PERSONAL_DATA_DB_NAME")
+
+    connect = musql.connection.MYSQLConnection(user=username,
+                                               password=password,
+                                               host=host,
+                                               database=db_name)
+    return connect
+
+
 class RedactingFormatter(logging.Formatter):
     """ Redacting Formatter class
         """
