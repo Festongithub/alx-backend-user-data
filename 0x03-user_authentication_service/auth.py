@@ -62,7 +62,6 @@ class Auth:
             return True
         return False
 
-     
     def create_session(self, email: str) -> str:
         """ Returns session ID for a user """
         try:
