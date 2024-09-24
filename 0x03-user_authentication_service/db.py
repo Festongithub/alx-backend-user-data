@@ -31,7 +31,6 @@ class DB:
             self.__session = DBSession()
         return self.__session
 
-    
     def add_user(self, email: str, hashed_password: str) -> User:
         """
         __summary__
@@ -41,4 +40,3 @@ class DB:
         self._session.add(new_user)
         self._session.commit()
         return new_user
-
