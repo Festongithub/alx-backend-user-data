@@ -10,6 +10,9 @@ from uuid import uuid4
 
 
 def _hash_password(password: str) -> str:
+    """
+    password
+    """
     new_password = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
     return new_password
 
@@ -41,7 +44,7 @@ class Auth:
         Tries to locate the user by email
         """
         try:
-            user = self._db.find_user(email=email)
+            user = self._db.find_user_by(email=email)
         except NoResultFound:
             return False
         user_pass = user.hashed_password
