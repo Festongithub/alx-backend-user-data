@@ -17,6 +17,14 @@ def _hash_password(password: str) -> str:
     return new_password
 
 
+def _generate_uuid() -> str:
+    """
+    Returns  a string of UUID
+    """
+    UUID = uuid4()
+    return str(UUID)
+
+
 class Auth:
     """Auth class to interact with the authentication database.
     """
