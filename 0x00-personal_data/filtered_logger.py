@@ -51,7 +51,6 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
     return cnx
 
 
-
 class RedactingFormatter(logging.Formatter):
     """ Redacting Formatter class
         """
